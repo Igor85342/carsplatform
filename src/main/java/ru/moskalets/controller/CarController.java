@@ -1,6 +1,6 @@
 package ru.moskalets.controller;
 
-import com.sun.jmx.snmp.Timestamp;
+//import com.sun.jmx.snmp.Timestamp;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,7 +85,7 @@ public class CarController {
                 imageBase64,
                 false,
                 this.userService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName()),
-                new Timestamp(System.currentTimeMillis()).getDateTime()
+//                new Timestamp(System.currentTimeMillis()).getDateTime()
         ));
         return "redirect:/cars/";
     }
