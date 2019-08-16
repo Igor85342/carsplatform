@@ -1,6 +1,5 @@
 package ru.moskalets.controller;
 
-//import com.sun.jmx.snmp.Timestamp;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +15,7 @@ import ru.moskalets.model.CarSpring;
 import ru.moskalets.service.CarService;
 import ru.moskalets.service.UserService;
 import java.io.IOException;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/cars")
@@ -76,6 +76,7 @@ public class CarController {
                           @RequestParam("transmission") int transmission
     ) throws IOException {
         String imageBase64 = Base64.encode(file.getBytes());
+        Date d = new Date(System.currentTimeMillis());
         this.carService.addCarSpring(new CarSpring(
                 this.carService.findCategorySpring(category),
                 this.carService.findBrandSpring(brand),
@@ -85,7 +86,7 @@ public class CarController {
                 imageBase64,
                 false,
                 this.userService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName()),
-//                new Timestamp(System.currentTimeMillis()).getDateTime()
+                new Date(System.currentTimeMillis()).getTime()
         ));
         return "redirect:/cars/";
     }
