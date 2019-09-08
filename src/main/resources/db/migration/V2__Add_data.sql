@@ -57,3 +57,4 @@ INSERT INTO transmissions(
 INSERT INTO transmissions(
 	id, name)
 	VALUES (3, 'Transmission003');
+
